@@ -6,16 +6,18 @@
 
 |Column               | Type   | Options     |
 |---------------------|--------|-------------|
+|last_name            | string | null:false  |
 |name                 | string | null:false  |
-|e-mail               | string | null:false, unique: true |
+|last_furigana        | string | null:false  |
+|name_furigana        | string | null:false  |
+|email                | string | null:false, unique: true |
 |encrypted_password   | string | null:false  |
-|birthday             | string | null:false  |
+|birthday             | date   | null:false  |
 
 
 ### Association
 - has_many :items
 - has_many :purchases
-- has_many :shippings
 
 
 
@@ -24,13 +26,13 @@
 | Column              |Type    |Options     |
 |---------------------|--------|------------|
 |item_name            | string | null:false |
-|price                | string | null:false |
-|category             | string | null:false |
+|price                | integer | null:false |
+|category_id          | integer | null:false |
 |explanation          | text   | null:false |
-|condition            | string | null:false |
-|fee                  | string | null:false |
-|area                 | string | null:false |
-|days                 | date   | null:false  |
+|condition_id         | integer | null:false |
+|fee_id               | integer | null:false |
+|area_id              | integer | null:false |
+|date_id              | integer   | null:false  |
 |seller               | references |null:false, foreign_key :true|
 |user_id              | references |null:false, foreign_key :true|
 
@@ -58,15 +60,14 @@
 
 | Column              | Type   | Options     |
 |---------------------|--------|-------------|
-|prefectures          | string | null:false  |
+|area_id              | integer | null:false  |
 |city                 | string | null:false  |
 |address              | string | null:false  |
 |code                 | string | null:false  |
 |building_name        | string |
 |telephone_number     | string | null:false  |
-
+|purchase_id          | string | null:false, foreign_key:true |
 
 ### Association
-- belongs_to :users
-- belongs_to :purchases
+- belongs_to :purchase
 
