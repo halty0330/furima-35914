@@ -31,8 +31,23 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is invalid")
       end
+      it 'priceが299円以下では登録できない' do
+        @item.price = '298'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is invalid")
+      end
+      it 'priceが10000000円以上では登録できない' do
+        @item.price = '10000001'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is invalid")
+      end
       it 'category_idが空では登録できない' do
         @item.category_id = ''
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category can't be blank")
+      end
+      it 'category_idが1では登録できない' do
+        @item.category_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
@@ -46,8 +61,18 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Condition can't be blank")
       end
+      it 'condition_idが1では登録できない' do
+        @item.condition_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Condition can't be blank")
+      end
       it 'fee_idが空では登録できない' do
         @item.fee_id = ''
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Fee can't be blank")
+      end
+      it 'fee_idが1では登録できない' do
+        @item.fee_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Fee can't be blank")
       end
@@ -56,8 +81,18 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Area can't be blank")
       end
+      it 'area_idが1では登録できない' do
+        @item.area_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Area can't be blank")
+      end
       it 'scheduled_day_idが空では登録できない' do
         @item.scheduled_day_id = ''
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Scheduled day can't be blank")
+      end
+      it 'scheduled_day_idが1では登録できない' do
+        @item.scheduled_day_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Scheduled day can't be blank")
       end
