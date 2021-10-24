@@ -5,7 +5,7 @@ class Item < ApplicationRecord
   belongs_to :fee
   belongs_to :area
   belongs_to :scheduled_day
-
+  belongs_to :user
   has_one_attached :image
 
 
