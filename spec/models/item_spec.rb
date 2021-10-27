@@ -7,7 +7,7 @@ RSpec.describe Item, type: :model do
 
   describe '商品出品' do
     context '商品出品ができる場合' do
-      it'item_name、price、category_id、explanation、condition_id、fee_id、area_id、scheduled_day_id、imageが存在すれば登録できる' do
+      it 'item_name、price、category_id、explanation、condition_id、fee_id、area_id、scheduled_day_id、imageが存在すれば登録できる' do
         expect(@item).to be_valid
       end
       it 'priceが半角数値であれば登録できる' do
@@ -29,17 +29,17 @@ RSpec.describe Item, type: :model do
       it 'priceに全角数値が含まれていると登録できない' do
         @item.price = '９９９'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid")
+        expect(@item.errors.full_messages).to include('Price is invalid')
       end
       it 'priceが299円以下では登録できない' do
         @item.price = '298'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid")
+        expect(@item.errors.full_messages).to include('Price is invalid')
       end
       it 'priceが10000000円以上では登録できない' do
         @item.price = '10000001'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid")
+        expect(@item.errors.full_messages).to include('Price is invalid')
       end
       it 'category_idが空では登録できない' do
         @item.category_id = ''
