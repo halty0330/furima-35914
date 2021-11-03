@@ -34,7 +34,7 @@
 |fee_id               | integer | null:false |
 |area_id              | integer | null:false |
 |scheduled_day_id     | integer   | null:false |
-|user                 | references |null:false, foreign_key :true|
+|user                 | references |null:false, foreign_key :true |
 
 
 ### Association
@@ -46,8 +46,8 @@
 
 | Column              | Type   |Options     |
 |---------------------|--------|------------|
-|item                 | references | null:false, foreign_key:true |
-|buyer                | references | null:false, foreign_key :true|
+|item                 | references | null:false, foreign_key :true |
+|user                 | references | null:false, foreign_key :true |
 
  
 ### Association
@@ -66,7 +66,7 @@
 |code                 | string | null:false  |
 |building_name        | string |
 |telephone_number     | string | null:false  |
-|purchase             | references | null:false, foreign_key:true |
+|purchase             | references | null:false, foreign_key :true |
 
 ### Association
 - belongs_to :purchase
