@@ -19,15 +19,15 @@ RSpec.describe OrderForm, type: :model do
     end
 
     context '内容に問題がある場合' do
-      it 'codeが空だと保存できないこと' do
-        @order_form.code = ''
+      it 'addressが空だと保存できないこと' do
+        @order_form.address = ''
         @order_form.valid?
-        expect(@order_form.errors.full_messages).to include("Code can't be blank")
+        expect(@order_form.errors.full_messages).to include("Address can't be blank")
       end
-      it 'codeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
-        @order_form.code = '1234567'
+      it 'addressが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
+        @order_form.address = '1234567'
         @order_form.valid?
-        expect(@order_form.errors.full_messages).to include('Code is invalid. Include hyphen(-)')
+        expect(@order_form.errors.full_messages).to include('Address is invalid. Include hyphen(-)')
       end
       it 'area_idを選択していないと保存できないこと' do
         @order_form.area_id = 0
@@ -39,10 +39,10 @@ RSpec.describe OrderForm, type: :model do
         @order_form.valid?
         expect(@order_form.errors.full_messages).to include("City can't be blank")
       end
-      it 'addressが空だと保存できないこと' do
-        @order_form.address = ''
+      it 'codeが空だと保存できないこと' do
+        @order_form.code = ''
         @order_form.valid?
-        expect(@order_form.errors.full_messages).to include("Address can't be blank")
+        expect(@order_form.errors.full_messages).to include("Code can't be blank")
       end
       it 'telephone_numberが空だと保存できないこと' do
         @order_form.telephone_number = ''

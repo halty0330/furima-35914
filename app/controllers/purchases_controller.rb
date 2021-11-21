@@ -1,5 +1,4 @@
 class PurchasesController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :create ]
   before_action :set_purchase, only: [:index, :create ]
 
   def index
