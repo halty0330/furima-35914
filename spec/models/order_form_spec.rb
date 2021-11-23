@@ -54,6 +54,21 @@ RSpec.describe OrderForm, type: :model do
         @order_form.valid?
         expect(@order_form.errors.full_messages).to include('Telephone number is invalid.')
       end
+      it 'telephone_numberが9桁以下だと保存できないこと' do
+        @order_form.telephone_number = '0901234'
+        @order_form.valid?
+        expect(@order_form.errors.full_messages).to include('Telephone number is invalid.')
+      end
+      it 'telephone_numberが12桁以上だと保存できないこと' do
+        @order_form.telephone_number = '09012345678901234'
+        @order_form.valid?
+        expect(@order_form.errors.full_messages).to include('Telephone number is invalid.')
+      end
+      it 'telephone_numberに半角数字以外が含まれている場合は保存できないこと' do
+        @order_form.telephone_number = '０９０１２３４５６７８'
+        @order_form.valid?
+        expect(@order_form.errors.full_messages).to include('Telephone number is invalid.')
+      end
       it 'item_idが紐付いていないと保存できないこと' do
         @order_form.item_id = nil
         @order_form.valid?
