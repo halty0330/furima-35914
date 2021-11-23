@@ -4,7 +4,11 @@ class PurchasesController < ApplicationController
 
   def index
     @order_form = OrderForm.new
-    redirect_to root_path unless @item.purchase.blank?
+    if current_user.id == @item.user_id
+      redirect_to root_path
+    else
+    end
+     redirect_to root_path unless @item.purchase.blank?
   end
 
   def create
