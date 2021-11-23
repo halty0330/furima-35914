@@ -1,8 +1,10 @@
 class PurchasesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_purchase, only: [:index, :create ]
 
   def index
     @order_form = OrderForm.new
+    redirect_to root_path unless @item.purchase.blank?
   end
 
   def create
