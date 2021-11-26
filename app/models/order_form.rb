@@ -5,6 +5,7 @@ class OrderForm
   with_options presence: true do
     validates :city
     validates :code
+    validates :area_id
     validates :address, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
     validates :telephone_number, format: {with: /\A\d{10}\z|\A\d{11}\z/ , message: "is invalid."}
     validates :user_id
